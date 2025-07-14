@@ -240,15 +240,15 @@ const AdminDashboard: React.FC = () => {
           </div>
 
           {/* Charts Grid */}
-          {/* Main Content Grid - Bar Chart and Activity Feed side by side */}
-          <div className="grid grid-cols-1 lg:grid-cols-10 gap-4 lg:gap-6 mb-6 lg:mb-8">
+          {/* Main Content Grid - Chart dan Activity Feed berdampingan */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6 mb-6 lg:mb-8">
             {/* Bar Chart - 60% width */}
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-3">
               <StudentsByMajorChart data={studentsByMajor} />
             </div>
             
             {/* Activity Feed - 40% width */}
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-2">
               <ActivityFeed activities={activities} />
             </div>
           </div>
