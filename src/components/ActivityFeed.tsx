@@ -44,46 +44,46 @@ const ActivityFeed: React.FC<ActivityFeedProps> = ({ activities }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm p-6">
+    <div className="bg-white rounded-xl shadow-sm p-4 lg:p-6 h-fit">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Aktivitas Pengguna Terbaru
+        Aktivitas Terbaru
       </h3>
-      <div className="space-y-4">
+      <div className="space-y-3 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
         {activities.length === 0 ? (
-          <div className="text-center py-8">
-            <User className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-            <p className="text-gray-500">Belum ada aktivitas</p>
+          <div className="text-center py-6">
+            <User className="w-10 h-10 text-gray-400 mx-auto mb-2" />
+            <p className="text-sm text-gray-500">Belum ada aktivitas</p>
           </div>
         ) : (
           activities.map((activity) => (
-            <div key={activity._id} className="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+            <div key={activity._id} className="flex items-start space-x-3 p-2 lg:p-3 hover:bg-gray-50 rounded-lg transition-colors border-b border-gray-50 last:border-b-0">
               <div className="flex-shrink-0">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <User className="w-5 h-5 text-blue-600" />
+                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                  <User className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600" />
                 </div>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center space-x-2 mb-1">
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-xs lg:text-sm font-medium text-gray-900 truncate">
                     {activity.user_data.full_name}
                   </p>
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getRoleColor(activity.user_data.user_roles)}`}>
+                  <span className={`inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium flex-shrink-0 ${getRoleColor(activity.user_data.user_roles)}`}>
                     {activity.user_data.user_roles[0]}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-xs lg:text-sm text-gray-600 mb-1 lg:mb-2">
                   Login berhasil dari {activity.device_info.os_name}
                 </p>
-                <div className="flex items-center space-x-4 text-xs text-gray-500">
+                <div className="flex items-center space-x-2 lg:space-x-4 text-xs text-gray-500">
                   <div className="flex items-center space-x-1">
                     <Clock className="w-3 h-3" />
-                    <span>{formatTime(activity.created_at)}</span>
+                    <span className="hidden sm:inline">{formatTime(activity.created_at)}</span>
                   </div>
                   <div className="flex items-center space-x-1">
                     {getDeviceIcon(activity.device_info.device_type)}
-                    <span>{activity.device_info.browser_name}</span>
+                    <span className="hidden lg:inline">{activity.device_info.browser_name}</span>
                   </div>
-                  <div className="flex items-center space-x-1">
+                  <div className="flex items-center space-x-1 hidden xl:flex">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <span>{activity.ip_address}</span>
                   </div>
