@@ -242,13 +242,13 @@ const AdminDashboard: React.FC = () => {
           {/* Charts Grid */}
           {/* Main Content Grid - Bar Chart and Activity Feed side by side */}
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-4 lg:gap-6 mb-6 lg:mb-8">
-            {/* Bar Chart - 70% width */}
-            <div className="lg:col-span-7">
+            {/* Bar Chart - 60% width */}
+            <div className="lg:col-span-6">
               <StudentsByMajorChart data={studentsByMajor} />
             </div>
             
-            {/* Activity Feed - 30% width */}
-            <div className="lg:col-span-3">
+            {/* Activity Feed - 40% width */}
+            <div className="lg:col-span-4">
               <ActivityFeed activities={activities} />
             </div>
           </div>
